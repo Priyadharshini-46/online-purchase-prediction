@@ -784,67 +784,134 @@
             resultBox.innerHTML = "Predicting...";
 
 
-            fetch("/predict", {
+            fetch("static/knn_model.json")
+                .then(response => response.json())
+                .then(model => {
 
-                method: "POST",
+                    const numericFeatures = model.numeric_features;
+                    const categoricalFeatures = model.categorical_features;
 
-                headers: {
-                    "Content-Type": "application/json"
-                },
+                    // Preprocess input
+                    let processedInput = [];
 
-                body: JSON.stringify(data)
+                    // Standardize numerical features
+                    numericFeatures.forEach((feature, i) => {
 
-            })
+                        let value = Number(data[feature]);
 
-            .then(response => response.json())
+                        let standardized =
+                            (value - model.numeric_mean[i]) /
+                            model.numeric_scale[i];
 
-            .then(result => {
+                        processedInput.push(standardized);
+
+                    });
+
+                    // One-hot encode categorical features
+                    categoricalFeatures.forEach((feature, i) => {
+
+                        const value = data[feature];
+                        const categories = model.categories[i];
+
+                        categories.forEach(category => {
+
+                            processedInput.push(
+                                value === category ? 1 : 0
+                            );
+
+                        });
+
+                    });
+
+                    // Calculate distance from every training sample
+                    let distances = [];
+
+                    for (let i = 0; i < model.X_train.length; i++) {
+
+                        let distance = 0;
+                        const trainingRow = model.X_train[i];
+
+                        for (let j = 0; j < processedInput.length; j++) {
+
+                            const difference =
+                                processedInput[j] - trainingRow[j];
+
+                            distance += difference * difference;
+
+                        }
+
+                        distances.push({
+                            distance: distance,
+                            index: i
+                        });
+
+                    }
+
+                    // Sort by nearest distance
+                    distances.sort((a, b) => a.distance - b.distance);
+
+                    // Take 5 nearest neighbours
+                    let purchaseVotes = 0;
+
+                    for (let i = 0; i < model.n_neighbors; i++) {
+
+                        const index = distances[i].index;
+
+                        purchaseVotes += Number(model.y_train[index]);
+
+                    }
+
+                    const prediction =
+                        purchaseVotes > model.n_neighbors / 2
+                            ? "Purchase"
+                            : "No Purchase";
 
 
-                if (result.prediction === "Purchase") {
+                    // Display result
+                    if (prediction === "Purchase") {
 
-    resultBox.innerHTML = `
-        <div class="prediction-success">
-            <h3>🛒 Purchase Predicted</h3>
-            <p>
-                The model predicts that this shopping session is
-                likely to result in a purchase.
-            </p>
-        </div>
-    `;
+                        resultBox.innerHTML = `
+                            <div class="prediction-success">
+                                <h3>🛒 Purchase Predicted</h3>
+                                <p>
+                                    The model predicts that this shopping session is
+                                    likely to result in a purchase.
+                                </p>
+                            </div>
+                        `;
 
-    resultBox.className = "result-purchase";
+                        resultBox.className = "result-purchase";
 
-}
+                    }
 
-else {
+                    else {
 
-    resultBox.innerHTML = `
-        <div class="prediction-no">
-            <h3>🛍️ No Purchase Predicted</h3>
-            <p>
-                The model predicts that this shopping session is
-                unlikely to result in a purchase.
-            </p>
-        </div>
-    `;
+                        resultBox.innerHTML = `
+                            <div class="prediction-no">
+                                <h3>🛍️ No Purchase Predicted</h3>
+                                <p>
+                                    The model predicts that this shopping session is
+                                    unlikely to result in a purchase.
+                                </p>
+                            </div>
+                        `;
 
-    resultBox.className = "result-no-purchase";
+                        resultBox.className = "result-no-purchase";
 
-}
+                    }
 
-            })
+                })
 
-            .catch(error => {
+                .catch(error => {
 
-                console.error(error);
+                    console.error(error);
 
-                resultBox.innerHTML =
-                    "Something went wrong. Please try again.";
+                    resultBox.innerHTML =
+                        "Something went wrong. Please try again.";
 
-                resultBox.className = "result-error";
+                    resultBox.className = "result-error";
 
-            });
+                });
 
         });
 
