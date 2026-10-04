@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Online Purchase Prediction</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="logo">PurchasePredict</div>
+
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#model">Model</a>
+             <a href="#results">Results</a>
+            <a href="#prediction">Prediction</a>
+        </div>
+    </nav>
+
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="home">
+
+        <div class="hero-content">
+
+            <p class="tag">MACHINE LEARNING • KNN CLASSIFICATION</p>
+
+            <h1>
+                Predict Online<br>
+                Shopping Purchase Intention
+            </h1>
+
+            <p>
+                Analyze customer browsing behavior and predict whether
+                an online shopping session is likely to result in a purchase.
+            </p>
+
+            <a href="#prediction" class="hero-button">
+                Start Prediction
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- MODEL INFORMATION -->
+    <section class="container" id="model">
+
+        <div class="section-heading">
+            <p class="tag">ABOUT THE MODEL</p>
+
+            <h2>Machine Learning Overview</h2>
+
+            <p>
+                Our system uses the K-Nearest Neighbors (KNN) classification
+                algorithm to predict online shopping purchase intention.
+            </p>
+        </div>
+
+
+        <div class="card-grid">
+
+            <div class="card">
+                <h3>Algorithm</h3>
+                <div class="metric">KNN</div>
+                <p>
+                    K-Nearest Neighbors classification algorithm.
+                </p>
+            </div>
+
+
+            <div class="card">
+                <h3>Dataset</h3>
+                <div class="metric">12,330</div>
+                <p>
+                    Online shopping sessions used for prediction.
+                </p>
+            </div>
+
+
+            <div class="card">
+                <h3>Features</h3>
+                <div class="metric">17</div>
+                <p>
+                    Customer browsing and session features.
+                </p>
+            </div>
+
+
+            <div class="card">
+                <h3>Accuracy</h3>
+                <div class="metric">86.74%</div>
+                <p>
+                    Accuracy obtained on the test dataset.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- HOW IT WORKS -->
+    <section class="container">
+
+        <div class="section-heading">
+
+            <p class="tag">HOW IT WORKS</p>
+
+            <h2>From Customer Behavior to Prediction</h2>
+
+        </div>
+
+
+        <div class="steps">
+
+            <div class="step">
+                <div class="step-number">01</div>
+
+                <h3>Enter Session Details</h3>
+
+                <p>
+                    Provide information about the customer's browsing
+                    session and website activity.
+                </p>
+            </div>
+
+
+            <div class="step">
+                <div class="step-number">02</div>
+
+                <h3>Preprocess Data</h3>
+
+                <p>
+                    The input is transformed using the same preprocessing
+                    applied during model training.
+                </p>
+            </div>
+
+
+            <div class="step">
+                <div class="step-number">03</div>
+
+                <h3>KNN Prediction</h3>
+
+                <p>
+                    The KNN model analyzes the nearest customer sessions
+                    and predicts the purchase intention.
+                </p>
+            </div>
+
+
+            <div class="step">
+                <div class="step-number">04</div>
+
+                <h3>View Result</h3>
+
+                <p>
+                    The system displays whether the session is predicted
+                    as a purchase or no purchase.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- DATASET & PROJECT INFORMATION -->
+<section class="container" id="about">
+
+    <div class="section-heading">
+
+        <p class="tag">PROJECT OVERVIEW</p>
+
+        <h2>Understanding the Dataset</h2>
+
+        <p>
+            The system uses the Online Shoppers Purchasing Intention Dataset
+            to analyze customer browsing behavior and predict whether a
+            shopping session results in a purchase.
+        </p>
+
+    </div>
+
+
+    <div class="info-grid">
+
+        <div class="info-card">
+
+            <div class="info-icon">01</div>
+
+            <h3>Problem</h3>
+
+            <p>
+                Predict whether an online shopping session will result
+                in a purchase based on customer browsing and session
+                behavior.
+            </p>
+
+        </div>
+
+
+        <div class="info-card">
+
+            <div class="info-icon">02</div>
+
+            <h3>Dataset</h3>
+
+            <p>
+                The dataset contains 12,330 online shopping sessions
+                with 17 input features and the Revenue target variable.
+            </p>
+
+        </div>
+
+
+        <div class="info-card">
+
+            <div class="info-icon">03</div>
+
+            <h3>Target Variable</h3>
+
+            <p>
+                Revenue represents the purchase outcome. False indicates
+                no purchase, while True indicates a purchase.
+            </p>
+
+        </div>
+
+
+        <div class="info-card">
+
+            <div class="info-icon">04</div>
+
+            <h3>Classification Model</h3>
+
+            <p>
+                K-Nearest Neighbors (KNN) is used to classify sessions
+                based on the behavior of their nearest neighboring
+                sessions.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="dataset-details">
+
+        <div>
+            <span>Dataset Size</span>
+            <strong>12,330 Sessions</strong>
+        </div>
+
+        <div>
+            <span>Input Features</span>
+            <strong>17 Features</strong>
+        </div>
+
+        <div>
+            <span>Target</span>
+            <strong>Revenue</strong>
+        </div>
+
+        <div>
+            <span>Classes</span>
+            <strong>Purchase / No Purchase</strong>
+        </div>
+
+    </div>
+
+</section>
+
+    <!-- MODEL PERFORMANCE SECTION -->
+<section class="container" id="results">
+
+    <div class="section-heading">
+
+        <p class="tag">MODEL PERFORMANCE</p>
+
+        <h2>How Well Does the Model Perform?</h2>
+
+        <p>
+            The KNN classifier was evaluated using accuracy, precision,
+            recall and F1-score on the test dataset.
+        </p>
+
+    </div>
+
+
+    <!-- METRICS -->
+
+    <div class="performance-grid">
+
+        <div class="performance-card">
+            <span>Accuracy</span>
+            <strong>86.74%</strong>
+        </div>
+
+        <div class="performance-card">
+            <span>Precision</span>
+            <strong>61.70%</strong>
+        </div>
+
+        <div class="performance-card">
+            <span>Recall</span>
+            <strong>37.96%</strong>
+        </div>
+
+        <div class="performance-card">
+            <span>F1-Score</span>
+            <strong>47.00%</strong>
+        </div>
+
+    </div>
+
+    <!-- MODEL GRAPHS -->
+<div class="charts-grid">
+
+    <div class="chart-card">
+        <p class="tag">CONFUSION MATRIX</p>
+        <h3>KNN Confusion Matrix</h3>
+
+        <img
+            src="{{ url_for('static', filename='images/confusion_matrix.png') }}"
+            alt="KNN Confusion Matrix"
+        >
+    </div>
+
+    <div class="chart-card">
+        <p class="tag">EVALUATION METRICS</p>
+        <h3>KNN Model Performance</h3>
+
+        <img
+            src="{{ url_for('static', filename='images/performance.png') }}"
+            alt="KNN Model Performance"
+        >
+    </div>
+
+</div>
+
+    <!-- CONFUSION MATRIX -->
+
+    <div class="results-card">
+
+        <div class="results-title">
+
+            <p class="tag">CONFUSION MATRIX</p>
+
+            <h3>Prediction Results</h3>
+
+        </div>
+
+
+        <div class="confusion-matrix">
+
+            <div class="matrix-corner"></div>
+
+            <div class="matrix-heading">
+                Predicted<br>
+                No Purchase
+            </div>
+
+            <div class="matrix-heading">
+                Predicted<br>
+                Purchase
+            </div>
+
+
+            <div class="matrix-label">
+                Actual<br>
+                No Purchase
+            </div>
+
+            <div class="matrix-value">
+                1994
+                <small>True Negative</small>
+            </div>
+
+            <div class="matrix-value">
+                90
+                <small>False Positive</small>
+            </div>
+
+
+            <div class="matrix-label">
+                Actual<br>
+                Purchase
+            </div>
+
+            <div class="matrix-value">
+                237
+                <small>False Negative</small>
+            </div>
+
+            <div class="matrix-value">
+                145
+                <small>True Positive</small>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- INFERENCE -->
+
+    <div class="inference-box">
+
+        <p class="tag">INFERENCE</p>
+
+        <h3>What Do These Results Tell Us?</h3>
+
+        <p>
+            The KNN classifier achieved an accuracy of 86.74% on the test
+            dataset. The precision of 61.70% indicates that around 62% of
+            sessions predicted as purchases were actual purchases.
+        </p>
+
+        <p>
+            The recall of 37.96% shows that the model identified around 38%
+            of the actual purchase sessions. The F1-score of 47.00% reflects
+            the balance between precision and recall.
+        </p>
+
+        <p>
+            The confusion matrix shows 1,994 correctly classified
+            no-purchase sessions and 145 correctly classified purchase
+            sessions. However, 237 actual purchase sessions were missed.
+            Therefore, while the model achieves good overall accuracy,
+            identifying actual purchasers remains a challenge.
+        </p>
+
+    </div>
+
+</section>
+
+    <!-- PREDICTION SECTION -->
+    <section class="prediction-section" id="prediction">
+
+        <div class="container">
+
+            <div class="section-heading">
+
+                <p class="tag">LIVE PREDICTION</p>
+
+                <h2>Predict Purchase Intention</h2>
+
+                <p>
+                    Enter the details of an online shopping session below.
+                </p>
+
+            </div>
+
+
+            <div class="prediction-box">
+
+                <form id="predictionForm">
+
+                    <!-- SESSION ACTIVITY -->
+
+                    <div class="form-section">
+
+                        <h3>Session Activity</h3>
+
+                        <p class="form-description">
+                            Enter information about pages visited during the session.
+                        </p>
+
+
+                        <div class="form-grid">
+
+                            <div class="form-group">
+                                <label>Administrative Pages</label>
+                                <input type="number" id="Administrative"
+                                    value="0" min="0" required>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label>Administrative Duration</label>
+                                <input type="number" id="Administrative_Duration"
+                                    value="0" step="any" min="0" required>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label>Informational Pages</label>
+                                <input type="number" id="Informational"
+                                    value="0" min="0" required>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label>Informational Duration</label>
+                                <input type="number" id="Informational_Duration"
+                                    value="0" step="any" min="0" required>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label>Product Related Pages</label>
+                                <input type="number" id="ProductRelated"
+                                    value="10" min="0" required>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label>Product Related Duration</label>
+                                <input type="number" id="ProductRelated_Duration"
+                                    value="100" step="any" min="0" required>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- BEHAVIOR -->
+
+                    <div class="form-section">
+
+                        <h3>Browsing Behavior</h3>
+
+                        <p class="form-description">
+                            Enter the customer's browsing behavior metrics.
+                        </p>
+
+
+                        <div class="form-grid">
+
+                            <div class="form-group">
+                                <label>Bounce Rate</label>
+                                <input type="number" id="BounceRates"
+                                    value="0.02" step="any" min="0" required>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label>Exit Rate</label>
+                                <input type="number" id="ExitRates"
+                                    value="0.03" step="any" min="0" required>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label>Page Value</label>
+                                <input type="number" id="PageValues"
+                                    value="0" step="any" min="0" required>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label>Special Day</label>
+                                <input type="number" id="SpecialDay"
+                                    value="0" step="any" min="0" max="1" required>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label>Weekend</label>
+
+                                <select id="Weekend">
+                                    <option value="False">No</option>
+                                    <option value="True">Yes</option>
+                                </select>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- USER INFORMATION -->
+
+                    <div class="form-section">
+
+                        <h3>Visitor & Website Information</h3>
+
+                        <p class="form-description">
+                            Select the visitor and website session characteristics.
+                        </p>
+
+
+                        <div class="form-grid">
+
+                            <div class="form-group">
+
+                                <label>Month</label>
+
+                                <select id="Month">
+
+                                    <option value="Feb">February</option>
+                                    <option value="Mar">March</option>
+                                    <option value="May" selected>May</option>
+                                    <option value="June">June</option>
+                                    <option value="Jul">July</option>
+                                    <option value="Aug">August</option>
+                                    <option value="Sep">September</option>
+                                    <option value="Oct">October</option>
+                                    <option value="Nov">November</option>
+                                    <option value="Dec">December</option>
+
+                                </select>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label>Visitor Type</label>
+
+                                <select id="VisitorType">
+
+                                    <option value="Returning_Visitor">
+                                        Returning Visitor
+                                    </option>
+
+                                    <option value="New_Visitor">
+                                        New Visitor
+                                    </option>
+
+                                    <option value="Other">
+                                        Other
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label>Operating System</label>
+
+                                <input type="number"
+                                    id="OperatingSystems"
+                                    value="2"
+                                    min="1"
+                                    required>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label>Browser</label>
+
+                                <input type="number"
+                                    id="Browser"
+                                    value="2"
+                                    min="1"
+                                    required>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label>Region</label>
+
+                                <input type="number"
+                                    id="Region"
+                                    value="1"
+                                    min="1"
+                                    required>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label>Traffic Type</label>
+
+                                <input type="number"
+                                    id="TrafficType"
+                                    value="2"
+                                    min="1"
+                                    required>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- BUTTON -->
+
+                    <button type="submit" class="predict-button">
+                        Predict Purchase Intention
+                    </button>
+
+                </form>
+
+
+                <!-- RESULT -->
+
+                <div id="result"></div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script>
+
+        document.getElementById("predictionForm").addEventListener("submit", function(event) {
+
+            event.preventDefault();
+
+
+            const data = {
+
+                Administrative:
+                    Number(document.getElementById("Administrative").value),
+
+                Administrative_Duration:
+                    Number(document.getElementById("Administrative_Duration").value),
+
+                Informational:
+                    Number(document.getElementById("Informational").value),
+
+                Informational_Duration:
+                    Number(document.getElementById("Informational_Duration").value),
+
+                ProductRelated:
+                    Number(document.getElementById("ProductRelated").value),
+
+                ProductRelated_Duration:
+                    Number(document.getElementById("ProductRelated_Duration").value),
+
+                BounceRates:
+                    Number(document.getElementById("BounceRates").value),
+
+                ExitRates:
+                    Number(document.getElementById("ExitRates").value),
+
+                PageValues:
+                    Number(document.getElementById("PageValues").value),
+
+                SpecialDay:
+                    Number(document.getElementById("SpecialDay").value),
+
+                Month:
+                    document.getElementById("Month").value,
+
+                OperatingSystems:
+                    Number(document.getElementById("OperatingSystems").value),
+
+                Browser:
+                    Number(document.getElementById("Browser").value),
+
+                Region:
+                    Number(document.getElementById("Region").value),
+
+                TrafficType:
+                    Number(document.getElementById("TrafficType").value),
+
+                VisitorType:
+                    document.getElementById("VisitorType").value,
+
+                Weekend:
+                    document.getElementById("Weekend").value === "True"
+
+            };
+
+
+            const resultBox = document.getElementById("result");
+
+            resultBox.innerHTML = "Predicting...";
+
+
+            fetch("/predict", {
+
+                method: "POST",
+
+                headers: {
+                    "Content-Type": "application/json"
+                },
+
+                body: JSON.stringify(data)
+
+            })
+
+            .then(response => response.json())
+
+            .then(result => {
+
+
+                if (result.prediction === "Purchase") {
+
+    resultBox.innerHTML = `
+        <div class="prediction-success">
+            <h3>🛒 Purchase Predicted</h3>
+            <p>
+                The model predicts that this shopping session is
+                likely to result in a purchase.
+            </p>
+        </div>
+    `;
+
+    resultBox.className = "result-purchase";
+
+}
+
+else {
+
+    resultBox.innerHTML = `
+        <div class="prediction-no">
+            <h3>🛍️ No Purchase Predicted</h3>
+            <p>
+                The model predicts that this shopping session is
+                unlikely to result in a purchase.
+            </p>
+        </div>
+    `;
+
+    resultBox.className = "result-no-purchase";
+
+}
+
+            })
+
+            .catch(error => {
+
+                console.error(error);
+
+                resultBox.innerHTML =
+                    "Something went wrong. Please try again.";
+
+                resultBox.className = "result-error";
+
+            });
+
+        });
+
+    </script>
+
+</body>
+
+</html>
